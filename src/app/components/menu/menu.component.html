@@ -1,0 +1,54 @@
+<nav class="card navbar navbar-expand-lg navbar-light mb-2 mt-2" style="background-color: #e3f2fd;">
+    <div class="container-fluid d-flex justify-content-between">
+    <div class="d-flex">
+      <a class="navbar-brand" [routerLink]="'/' + role">Call Center</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a *ngIf="!isAdmin" class="nav-link active" aria-current="page" [routerLink]="'/user'">Home</a>
+          </li>
+          <li class="nav-item" >
+            <a class="nav-link" [routerLink]="'/' + role + '/dashboard'">Dashboard</a>
+          </li>
+          <li class="nav-item" *ngIf="!isAdmin">
+            <a class="nav-link" [routerLink]="'/user/derangements'">Derangements</a>
+          </li>
+          <li class="nav-item" *ngIf="isAdmin">
+            <a class="nav-link" [routerLink]="'/admin/users'">Users</a>
+          </li>
+          <li class="nav-item" *ngIf="isAdmin">
+            <a class="nav-link" [routerLink]="'/admin/derangements'">Liste Dérangements</a>
+          </li>
+          <li class="nav-item" *ngIf="isAdmin">
+            <a class="nav-link" [routerLink]="'/admin/offres'">Liste Offres</a>
+          </li>
+         
+        </ul>
+    </div>
+      </div>
+      <div class="d-flex align-items-center">
+            <a *ngIf="!isAdmin" [routerLink]="'/user/newDerangement'" class="btn btn-success me-3" type="submit">
+                <em class="fas fa-plus"></em>&nbsp;New Derangement
+            </a>
+            <li class="nav-item" *ngIf="isAdmin">
+             
+              <a [routerLink]="'/admin/addOffre'" class="btn btn-success me-3"type="submit" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@mdo"> 
+                <em class="fas fa-plus"></em>&nbsp; ADD OFFER
+              </a>
+
+            </li>
+            <a [routerLink]="'/' + role + '/profile'">
+            <em class="fas fa-user"></em>&nbsp;{{this.userFullname}}
+        </a>
+       
+        <!-- Bouton de déconnexion -->
+        <button class="btn btn-danger ms-3" (click)="onLogout()">
+          <em class="fas fa-sign-out-alt"></em>&nbsp;Logout
+      </button>
+      </div>
+      
+    </div>
+  </nav>

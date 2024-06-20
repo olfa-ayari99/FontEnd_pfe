@@ -1,0 +1,142 @@
+<div class="container p-3">
+    <h2>New Derangement</h2>
+    <hr>
+    
+    <!-- Affichage des messages d'erreur -->
+    <div class="alert alert-danger" role="alert" *ngIf="errorMessages?.length">
+        <p *ngFor="let msg of errorMessages">{{ msg }}</p>
+    </div>
+    
+    <!-- Formulaire -->
+    <div class="row">
+        <div class="col-md-6">
+            <div class="card mb-3">
+                <div class="card-body">
+                    <h5 class="card-title">Informations générales</h5>
+                    
+                    <!-- Champ Nom dérangement -->
+                    <div class="mb-3">
+                        <label for="nomDerangement" class="form-label">Nom dérangement</label>
+                        <input [(ngModel)]="derangement.nomDerangement" type="text" class="form-control" id="nomDerangement">
+                    </div>
+                    
+                    <!-- Champ Réseau -->
+                    <div class="mb-3">
+                        <label for="reseau" class="form-label">Réseau</label>
+                        <input [(ngModel)]="derangement.reseau" type="text" class="form-control" id="reseau">
+                    </div>
+                    
+                    <!-- Champ Services impactés -->
+                    <div class="mb-3">
+                        <label for="services" class="form-label">Services impactés</label>
+                        <input [(ngModel)]="derangement.serviceImpacte" type="text" class="form-control" id="services">
+                    </div>
+                    
+                    <!-- Champ Cause -->
+                    <div class="mb-3">
+                        <label for="cause" class="form-label">Cause</label>
+                        <input [(ngModel)]="derangement.cause" type="text" class="form-control" id="cause">
+                    </div>
+                    
+                    <!-- Champ Date de début du dérangement -->
+                    <div class="mb-3">
+                        <label for="dateDebut" class="form-label">Date de début du dérangement</label>
+                        <input [(ngModel)]="derangement.dateDebutDerangement" type="date" class="form-control" id="dateDebut">
+                    </div>
+                    
+                    <!-- Champ Date de constat -->
+                    <div class="mb-3">
+                        <label for="dateConstat" class="form-label">Date de constat</label>
+                        <input [(ngModel)]="derangement.dateConstat" type="date" class="form-control" id="dateConstat">
+                    </div>
+                    
+                    <!-- Champ Délai prévisionnel -->
+                    <div class="mb-3">
+                        <label for="delai" class="form-label">Délai prévisionnel</label>
+                        <input [(ngModel)]="derangement.delaiPrevisionnel" type="text" class="form-control" id="delai">
+                    </div>
+                    
+                    <!-- Champ Date de résolution Prévu -->
+                    <div class="mb-3">
+                        <label for="dateResPrevu" class="form-label">Date de résolution Prévu</label>
+                        <input [(ngModel)]="derangement.dateResolutionPrevu" type="date" class="form-control" id="dateResPrevu">
+                    </div>
+                    
+                    <!-- Champ Date de résolution réel -->
+                    <div class="mb-3">
+                        <label for="dateResReel" class="form-label">Date de résolution réel</label>
+                        <input [(ngModel)]="derangement.dateResolutionReel" type="date" class="form-control" id="dateResReel">
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-md-6">
+            <div class="card mb-3">
+                <div class="card-body">
+                    <h5 class="card-title">Détails supplémentaires</h5>
+                    
+                    <!-- Champ Porteur -->
+                    <div class="mb-3">
+                        <label for="porteur" class="form-label">Porteur</label>
+                        <input [(ngModel)]="derangement.porteur" type="text" class="form-control" id="porteur">
+                    </div>
+                    
+                    <!-- Champ Profile plateau concerné -->
+                    <div class="mb-3">
+                        <label for="profilePlateau" class="form-label">Profile plateau concerné</label>
+                        <input [(ngModel)]="derangement.profilePlateauConcerne" type="text" class="form-control" id="profilePlateau">
+                    </div>
+                    
+                    <!-- Champ Statut -->
+                    <div class="mb-3">
+                        <label for="statut" class="form-label">Statut</label>
+                        <select [(ngModel)]="derangement.statut" class="form-select" aria-label="Statut">
+                            <option value="OUVERT">OUVERT</option>
+                            <option value="FERME">FERME</option>
+                        </select>
+                    </div>
+                    
+                    <!-- Champ Script du discours client adapté -->
+                    <div class="mb-3">
+                        <label for="script" class="form-label">Script du discours client adapté</label>
+                        <textarea [(ngModel)]="derangement.script" class="form-control" id="script" style="height: 200px;"></textarea>
+                    </div>
+                    
+                    <!-- Champ Latitude -->
+                    <div class="mb-3">
+                        <label for="latitude" class="form-label">Latitude</label>
+                        <input [(ngModel)]="derangement.latidude" type="text" class="form-control" id="latitude">
+                    </div>
+                    
+                    <!-- Champ Longitude -->
+                    <div class="mb-3">
+                        <label for="longitude" class="form-label">Longitude</label>
+                        <input [(ngModel)]="derangement.longitude" type="text" class="form-control" id="longitude">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Section pour afficher la carte de localisation -->
+    <div class="mb-3">
+        <div class="card mb-3">
+            <h5>Sélectionner l'emplacement</h5>
+            <app-localisation (locationSelected)="onLocationSelected($event)"></app-localisation>
+        </div>
+    
+    <!-- Boutons Save et Cancel -->
+    <div class="d-flex justify-content-end">
+        <button (click)="cancel()" type="button" class="btn btn-primary me-2">
+            <em class="fas fa-times"></em>&nbsp;Cancel
+        </button>
+        
+        <button (click)="save()" type="button" class="btn btn-danger">
+            <em class="fas fa-save"></em>&nbsp;Save
+        </button>
+    </div>
+</div>
+</div>
+
+

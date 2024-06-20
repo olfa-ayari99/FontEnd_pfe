@@ -1,0 +1,9 @@
+/* Exemple de styles pour localisation.component.css */
+#map {
+    height: 300px; /* Ajustez la hauteur selon vos besoins */
+  }
+  
+  .modal-lg {
+    max-width: 90%; /* Ajustez la largeur maximale du modal */
+  }
+  

@@ -1,0 +1,1492 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "OpenAPI definition",
+    "version": "v0"
+  },
+  "servers": [
+    {
+      "url": "https://localhost:8443",
+      "description": "Generated server url"
+    }
+  ],
+  "security": [
+    {
+      "bearerAuth": []
+    }
+  ],
+  "paths": {
+    "/api/v1/user/updateUser": {
+      "put": {
+        "tags": [
+          "user"
+        ],
+        "operationId": "updateUser",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/User"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/User"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/offre/updateOffre": {
+      "put": {
+        "tags": [
+          "offre"
+        ],
+        "operationId": "updateOffre",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Offre"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Offre"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/management": {
+      "get": {
+        "tags": [
+          "Management"
+        ],
+        "summary": "This is a summary for management get endpoint",
+        "description": "Get endpoint for manager",
+        "operationId": "get",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Unauthorized / Invalid Token",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Management"
+        ],
+        "operationId": "put",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Management"
+        ],
+        "operationId": "post",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Management"
+        ],
+        "operationId": "delete",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/localisation/updateLocation": {
+      "put": {
+        "tags": [
+          "localisation"
+        ],
+        "operationId": "updateLocation",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Equipement"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Equipement"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/derangement/updateDerangement/{idDerangement}": {
+      "put": {
+        "tags": [
+          "derangement"
+        ],
+        "operationId": "updateDerangement",
+        "parameters": [
+          {
+            "name": "idDerangement",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Derangement"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Derangement"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/ClientImpacte/affectClientsToDerangement/{idDerangement}": {
+      "put": {
+        "tags": [
+          "ClientImpacte"
+        ],
+        "operationId": "affectClientsToDerangement",
+        "parameters": [
+          {
+            "name": "idDerangement",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "type": "integer",
+                  "format": "int64"
+                }
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/v1/user/affecterOffre/{idOffre}": {
+      "post": {
+        "tags": [
+          "user"
+        ],
+        "operationId": "affecterOffreAUtilisateurs",
+        "parameters": [
+          {
+            "name": "idOffre",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "type": "integer",
+                  "format": "int64"
+                }
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/user/addUser": {
+      "post": {
+        "tags": [
+          "user"
+        ],
+        "operationId": "addUser",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/User"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/User"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/offre/addOffre": {
+      "post": {
+        "tags": [
+          "offre"
+        ],
+        "operationId": "addOffre",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Offre"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Offre"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/localisation/addLocalisation": {
+      "post": {
+        "tags": [
+          "localisation"
+        ],
+        "operationId": "addLocation",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Equipement"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Equipement"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/derangement/search": {
+      "post": {
+        "tags": [
+          "derangement"
+        ],
+        "operationId": "searchDerangements",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "additionalProperties": {
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Derangement"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/derangement/add/{userId}/{idEquip}": {
+      "post": {
+        "tags": [
+          "derangement"
+        ],
+        "operationId": "addDerangement",
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          },
+          {
+            "name": "idEquip",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Derangement"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Derangement"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/auth/register": {
+      "post": {
+        "tags": [
+          "authentication"
+        ],
+        "operationId": "register",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RegisterRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/auth/refresh-token": {
+      "post": {
+        "tags": [
+          "authentication"
+        ],
+        "operationId": "refreshToken",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/v1/auth/authenticate": {
+      "post": {
+        "tags": [
+          "authentication"
+        ],
+        "operationId": "authenticate",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AuthenticationRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/ClientImpacte/addClient": {
+      "post": {
+        "tags": [
+          "ClientImpacte"
+        ],
+        "operationId": "addClient",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ClientImpacte"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ClientImpacte"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/user/changePassword": {
+      "patch": {
+        "tags": [
+          "user"
+        ],
+        "operationId": "changePassword",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ChangePasswordRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/user/{id}": {
+      "get": {
+        "tags": [
+          "user"
+        ],
+        "operationId": "getUserById",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/User"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/user/getlUser/{idUser}": {
+      "get": {
+        "tags": [
+          "user"
+        ],
+        "operationId": "getUser",
+        "parameters": [
+          {
+            "name": "idUser",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/User"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/user/getAllUsers": {
+      "get": {
+        "tags": [
+          "user"
+        ],
+        "operationId": "getAllUsers",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/User"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/offre/getOffre/{idOffre}": {
+      "get": {
+        "tags": [
+          "offre"
+        ],
+        "operationId": "getOffre",
+        "parameters": [
+          {
+            "name": "idOffre",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Offre"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/offre/getAllOffres": {
+      "get": {
+        "tags": [
+          "offre"
+        ],
+        "operationId": "getAllOffres",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Offre"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/localisation/getlocation/{idLocal}": {
+      "get": {
+        "tags": [
+          "localisation"
+        ],
+        "operationId": "getLocation",
+        "parameters": [
+          {
+            "name": "idLocal",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Equipement"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/localisation/getAllLocations": {
+      "get": {
+        "tags": [
+          "localisation"
+        ],
+        "operationId": "getAllLocations",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Equipement"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/derangement/getDerangementByStatus/{statut}": {
+      "get": {
+        "tags": [
+          "derangement"
+        ],
+        "operationId": "findDerangementByStatus",
+        "parameters": [
+          {
+            "name": "statut",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "enum": [
+                "OUVERT",
+                "FERME"
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Derangement"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/derangement/getDerangementByClientImpacte/{idClient}": {
+      "get": {
+        "tags": [
+          "derangement"
+        ],
+        "operationId": "findDerangementByClient",
+        "parameters": [
+          {
+            "name": "idClient",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Derangement"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/derangement/getDearngement/{idDerangement}": {
+      "get": {
+        "tags": [
+          "derangement"
+        ],
+        "operationId": "getDerangement",
+        "parameters": [
+          {
+            "name": "idDerangement",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Derangement"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/derangement/getAllDerangements": {
+      "get": {
+        "tags": [
+          "derangement"
+        ],
+        "operationId": "getAllDerangements",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Derangement"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/derangement/getAllDerangementByUser/{idUser}": {
+      "get": {
+        "tags": [
+          "derangement"
+        ],
+        "operationId": "getDerangementByUser",
+        "parameters": [
+          {
+            "name": "idUser",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Derangement"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/admin": {
+      "get": {
+        "tags": [
+          "admin-controller"
+        ],
+        "operationId": "get_1",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/ClientImpacte/getClient/{idClient}": {
+      "get": {
+        "tags": [
+          "ClientImpacte"
+        ],
+        "operationId": "getClient",
+        "parameters": [
+          {
+            "name": "idClient",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ClientImpacte"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/ClientImpacte/getAllClients": {
+      "get": {
+        "tags": [
+          "ClientImpacte"
+        ],
+        "operationId": "getAllClients",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/ClientImpacte"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/user/deleteUser/{idUser}": {
+      "delete": {
+        "tags": [
+          "user"
+        ],
+        "operationId": "deleteUser",
+        "parameters": [
+          {
+            "name": "idUser",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/v1/offre/deleteOffre/{idOffre}": {
+      "delete": {
+        "tags": [
+          "offre"
+        ],
+        "operationId": "deleteOffre",
+        "parameters": [
+          {
+            "name": "idOffre",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/v1/localisation/deleteLocation/{idLocal}": {
+      "delete": {
+        "tags": [
+          "localisation"
+        ],
+        "operationId": "deleteLocation",
+        "parameters": [
+          {
+            "name": "idLocal",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/v1/derangement/deleteDerangement/{idDerangement}": {
+      "delete": {
+        "tags": [
+          "derangement"
+        ],
+        "operationId": "deleteDerangement",
+        "parameters": [
+          {
+            "name": "idDerangement",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Derangement": {
+        "type": "object",
+        "properties": {
+          "idDerangement": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "nomDerangement": {
+            "type": "string"
+          },
+          "dateCreationDer": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "reseau": {
+            "type": "string"
+          },
+          "serviceImpacte": {
+            "type": "string"
+          },
+          "cause": {
+            "type": "string"
+          },
+          "dateDebutDerangement": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "dateConstat": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "delaiPrevisionnel": {
+            "type": "string"
+          },
+          "dateResolutionPrevu": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "dateResolutionReel": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "porteur": {
+            "type": "string"
+          },
+          "statut": {
+            "type": "string",
+            "enum": [
+              "OUVERT",
+              "FERME"
+            ]
+          },
+          "profilePlateauConcerne": {
+            "type": "string"
+          },
+          "longitude": {
+            "type": "string"
+          },
+          "latidude": {
+            "type": "string"
+          },
+          "script": {
+            "type": "string"
+          },
+          "equipement": {
+            "$ref": "#/components/schemas/Equipement"
+          },
+          "user": {
+            "$ref": "#/components/schemas/User"
+          }
+        }
+      },
+      "Equipement": {
+        "type": "object",
+        "properties": {
+          "idEquip": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "nomEquipement": {
+            "type": "string"
+          },
+          "addresse": {
+            "type": "string"
+          },
+          "longitude": {
+            "type": "number",
+            "format": "double"
+          },
+          "latitude": {
+            "type": "number",
+            "format": "double"
+          },
+          "ville": {
+            "type": "string"
+          },
+          "derangements": {
+            "uniqueItems": true,
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Derangement"
+            }
+          },
+          "idLocal": {
+            "type": "integer",
+            "format": "int64"
+          }
+        }
+      },
+      "Offre": {
+        "type": "object",
+        "properties": {
+          "idOffre": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "nomOffre": {
+            "type": "string"
+          },
+          "users": {
+            "uniqueItems": true,
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/User"
+            }
+          }
+        }
+      },
+      "Token": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "token": {
+            "type": "string"
+          },
+          "tokenType": {
+            "type": "string",
+            "enum": [
+              "BEARER"
+            ]
+          },
+          "revoked": {
+            "type": "boolean"
+          },
+          "expired": {
+            "type": "boolean"
+          },
+          "user": {
+            "$ref": "#/components/schemas/User"
+          },
+          "tokenId": {
+            "type": "integer",
+            "format": "int32"
+          }
+        }
+      },
+      "User": {
+        "required": [
+          "email",
+          "firstname",
+          "lastname",
+          "password"
+        ],
+        "type": "object",
+        "properties": {
+          "idUser": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "firstname": {
+            "type": "string"
+          },
+          "lastname": {
+            "type": "string"
+          },
+          "username": {
+            "type": "string"
+          },
+          "email": {
+            "type": "string"
+          },
+          "password": {
+            "type": "string"
+          },
+          "address": {
+            "type": "string"
+          },
+          "telNum": {
+            "type": "string"
+          },
+          "role": {
+            "type": "string",
+            "enum": [
+              "USER",
+              "AOT",
+              "ASC",
+              "ADMIN"
+            ]
+          },
+          "derangementSet": {
+            "uniqueItems": true,
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Derangement"
+            }
+          },
+          "tokens": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Token"
+            }
+          },
+          "offre": {
+            "$ref": "#/components/schemas/Offre"
+          },
+          "enabled": {
+            "type": "boolean"
+          },
+          "accountNonExpired": {
+            "type": "boolean"
+          },
+          "credentialsNonExpired": {
+            "type": "boolean"
+          },
+          "accountNonLocked": {
+            "type": "boolean"
+          }
+        }
+      },
+      "RegisterRequest": {
+        "required": [
+          "email",
+          "firstname",
+          "lastname",
+          "password"
+        ],
+        "type": "object",
+        "properties": {
+          "firstname": {
+            "type": "string"
+          },
+          "lastname": {
+            "type": "string"
+          },
+          "email": {
+            "type": "string"
+          },
+          "password": {
+            "type": "string"
+          },
+          "role": {
+            "type": "string",
+            "enum": [
+              "USER",
+              "AOT",
+              "ASC",
+              "ADMIN"
+            ]
+          }
+        }
+      },
+      "AuthenticationRequest": {
+        "type": "object",
+        "properties": {
+          "email": {
+            "type": "string"
+          },
+          "password": {
+            "type": "string"
+          }
+        }
+      },
+      "ClientImpacte": {
+        "type": "object",
+        "properties": {
+          "idClient": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "login": {
+            "type": "string"
+          },
+          "ip": {
+            "type": "string"
+          },
+          "typeClient": {
+            "type": "string",
+            "enum": [
+              "B2C",
+              "B2B"
+            ]
+          },
+          "contact1": {
+            "type": "string"
+          },
+          "conatact2": {
+            "type": "string"
+          },
+          "libelleOffre": {
+            "type": "string"
+          },
+          "numeroLigne": {
+            "type": "string"
+          },
+          "derangements": {
+            "uniqueItems": true,
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Derangement"
+            }
+          }
+        }
+      },
+      "ChangePasswordRequest": {
+        "type": "object",
+        "properties": {
+          "currentPassword": {
+            "type": "string"
+          },
+          "newPassword": {
+            "type": "string"
+          },
+          "confirmationPassword": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "securitySchemes": {
+      "bearerAuth": {
+        "type": "http",
+        "scheme": "bearer",
+        "bearerFormat": "JWT"
+      }
+    }
+  }
+}
